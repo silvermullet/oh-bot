@@ -61,7 +61,7 @@ def set_office_hours(event, context):
             'expected_topics': {
                 'slack_user_a':"I have a question about Packer",
                 'slack_user_b':"I have an issue with Terraform ASG I would like to debug"
-                }
+            }
         }
     )
 
