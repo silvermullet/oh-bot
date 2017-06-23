@@ -32,11 +32,11 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: date
+            AttributeName: id
             AttributeType: S
         KeySchema:
           -
-            AttributeName: date
+            AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
