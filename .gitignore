@@ -1,4 +1,3 @@
 .serverless
 *.pyc
 *.pyo
-localdev/
