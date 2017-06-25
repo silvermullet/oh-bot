@@ -12,3 +12,17 @@ The Oh-bot will help manage your team's office hours.
 * Provide insight into past office hours to help make improvements to services team provides
 
 Serverless framework driven setup
+
+### Local Development
+
+Initial setup script will download latest DynamoDB local service
+
+```
+bash localdev_setup.sh
+```
+
+To run local DynamoDB on port 8000
+
+```
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
+```
