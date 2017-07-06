@@ -20,9 +20,9 @@ provider:
 
 functions:
   set_office_hours:
-    handler: oh-bot/set_office_hours.set_office_hours
+    handler: oh_bot/set_office_hours.set_office_hours
   add_discussion_topic:
-    handler: oh-bot/add_discussion_topic.add_discussion_topic
+    handler: oh_bot/add_discussion_topic.add_discussion_topic
 
 resources:
   Resources:

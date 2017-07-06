@@ -2,7 +2,7 @@ import logging
 import time
 import decimal
 
-from todos import decimalencoder
+from oh_bot import decimalencoder
 import boto3
 
 dynamodb = boto3.client('dynamodb')
