@@ -13,6 +13,10 @@ The Oh-bot will help manage your team's office hours.
 
 Serverless framework driven setup
 
+### Present abilities
+
+ 1. Oh-bot is able to set your team's office hours. Just ask to set your team's office hours and it will help out.
+
 ### Local Development
 
 Initial setup script will download latest DynamoDB local service
