@@ -21,8 +21,8 @@ provider:
 functions:
   set_office_hours:
     handler: oh_bot/set_office_hours.set_office_hours
-  add_discussion_topic:
-    handler: oh_bot/add_discussion_topic.add_discussion_topic
+  get_office_hours:
+    handler: oh_bot/get_office_hours.get_office_hours
 
 resources:
   Resources:
@@ -32,11 +32,11 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: id
+            AttributeName: team
             AttributeType: S
         KeySchema:
           -
-            AttributeName: id
+            AttributeName: team
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

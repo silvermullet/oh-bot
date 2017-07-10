@@ -1,19 +1,19 @@
 import logging
 import time
-import decimal
 
-from oh_bot import decimalencoder
 import boto3
 
 dynamodb = boto3.client('dynamodb')
 
 def get_date_topics(event, context):
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
+    date     = event['currentIntent']['slots']['GetOfficeHoursDay']
+    team     = event['currentIntent']['slots']['GetTeam']
 
-    # fetch todo from the database
+    # fetch topics from the database
     result = table.get_item(
         Key={
-            'date': event['date']
+            'id': team + date,
             'slack_team': data['slack_team'],
             'slack_channel': data['slack_channel'],
         }

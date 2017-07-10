@@ -15,7 +15,9 @@ Serverless framework driven setup
 
 ### Present abilities
 
- 1. Oh-bot is able to set your team's office hours. Just ask to set your team's office hours and it will help out.
+Oh-bot is able to...
+ 1. Set your team's office hours. Just ask to set your team's office hours and it will help out.
+ 2. Retrieve office hours for a known team 
 
 ### Local Development
 
