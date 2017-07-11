@@ -5,41 +5,18 @@ import boto3
 
 dynamodb = boto3.client('dynamodb')
 
-def get_date_topics(event, context):
-    table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
-    date     = event['currentIntent']['slots']['GetOfficeHoursDay']
-    team     = event['currentIntent']['slots']['GetTeam']
-
-    # fetch topics from the database
-    result = table.get_item(
-        Key={
-            'id': team + date,
-            'slack_team': data['slack_team'],
-            'slack_channel': data['slack_channel'],
-        }
-    )
-
-    return json.dumps(result['Item']['expected_topics'], cls=decimalencoder.DecimalEncoder)
-
 def add_discussion_topic(event, context):
     #debug print for lex event data
     print(event)
 
-    data = json.loads(event['body'])
-
-    if 'topic' not in data or 'date' not in data:
-        logging.error("Validation Failed")
-        raise Exception("Could not set office hours, need topic and date")
-        return
-
-    table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
-    today = time.strftime("%d/%m/%Y")
+    table = dynamodb.Table(os.environ['DYNAMODB_TABLE_TOPICS'])
+    team     = event['currentIntent']['slots']['GetTeam']
+    date     = event['currentIntent']['slots']['GetDay']
 
     response = table.update_item(
         Key={
-            'date': event['date'],
-            'slack_team': data['slack_team'],
-            'slack_channel': data['slack_channel'],
+            'team': team,
+            'date': date
         },
         ExpressionAttributeNames={
             "#slack_user": event['slack_user'] ,

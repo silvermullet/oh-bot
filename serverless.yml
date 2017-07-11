@@ -7,6 +7,7 @@ provider:
   runtime: python2.7
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    DYNAMODB_TABLE_TOPICS: '${self:service}-${opt:stage, self:provider.stage}-topics'
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -16,7 +17,9 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource:
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}-topics"
 
 functions:
   set_office_hours:
@@ -26,6 +29,28 @@ functions:
 
 resources:
   Resources:
+    OfficeHoursTopicsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: team
+            AttributeType: S
+          -
+            AttributeName: date
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: team
+            KeyType: HASH
+          -
+            AttributeName: date
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: '${self:provider.environment.DYNAMODB_TABLE}-topics'
     OfficeHoursDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain

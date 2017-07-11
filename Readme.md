@@ -17,7 +17,7 @@ Serverless framework driven setup
 
 Oh-bot is able to...
  1. Set your team's office hours. Just ask to set your team's office hours and it will help out.
- 2. Retrieve office hours for a known team 
+ 2. Retrieve office hours for a known team (Controlled by the Lex slot SetTeam) 
 
 ### Local Development
 
