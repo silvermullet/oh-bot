@@ -26,7 +26,7 @@ def add_discussion_topic(event, context):
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE_TOPICS'])
     team  = event['currentIntent']['slots']['GetTeam']
     date  = event['currentIntent']['slots']['GetDay']
-    topic = event['currentIntent']['slots']['GetTopic']
+    topic = event['currentIntent']['slots']['GetTheTopic']
 
     response = table.put_item(
         Item={

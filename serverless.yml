@@ -4,7 +4,7 @@ frameworkVersion: ">=1.4.0 <2.0.0"
 
 provider:
   name: aws
-  runtime: python2.7
+  runtime: python3.6
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
     DYNAMODB_TABLE_TOPICS: '${self:service}-${opt:stage, self:provider.stage}-topics'
@@ -35,18 +35,18 @@ resources:
   Resources:
     OfficeHoursTopicsDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
+      DeletionPolicy: Delete
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: team
+            AttributeName: id
             AttributeType: S
           -
             AttributeName: date
             AttributeType: S
         KeySchema:
           -
-            AttributeName: team
+            AttributeName: id
             KeyType: HASH
           -
             AttributeName: date

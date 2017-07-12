@@ -3,17 +3,22 @@ import time
 import os
 
 import boto3
+from boto3.dynamodb.conditions import Key, Attr
 
 dynamodb = boto3.resource('dynamodb')
 
 def build_response(message):
+    topics = ""
+    for i, j in enumerate(message['Items']):
+        topics += "{0}: {1}\n".format(i + 1, j['topic'])
+
     return {
         "dialogAction":  {
             "type": "Close",
             "fulfillmentState": "Fulfilled",
             "message": {
                     "contentType": "PlainText",
-                    "content": message
+                    "content": topics
             }
         }
     }
@@ -26,10 +31,11 @@ def lookup_discussion_topics(event, context):
     team  = event['currentIntent']['slots']['GetTeam']
     date  = event['currentIntent']['slots']['GetQueryDay']
 
-    response = table.query(
-        KeyConditionExpression=Key('date').eq(date) & Key('team').eq(team)
+    filter_expression = Key('date').eq(date) & Key('team').eq(team);
+    response = table.scan(
+        FilterExpression=filter_expression,
     )
 
     print("Query succeeded:")
 
-    return build_response("topics for discussion: {0}".format(response))
+    return build_response(response)
