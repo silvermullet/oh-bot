@@ -1,7 +1,6 @@
 import logging
 import json
 import os
-import uuid
 import boto3
 from botocore.exceptions import ClientError
 
@@ -24,7 +23,7 @@ def set_office_hours(event, context):
     print(event)
 
     table    = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
-    day      = event['currentIntent']['slots']['SetOfficeHoursDay']
+    day      = event['currentIntent']['slots']['SetOfficeHoursDays']
     location = event['currentIntent']['slots']['SetOfficeHoursLocation']
     start    = event['currentIntent']['slots']['SetOfficeHoursStart']
     end      = event['currentIntent']['slots']['SetOfficeHoursEnd']
@@ -36,7 +35,7 @@ def set_office_hours(event, context):
                 'team': team,
                 'day': day
             },
-            UpdateExpression="set OfficeHoursLocation = :l, SetOfficeHoursStart=:s, SetOfficeHoursEnd=:e, SetDays=:d",
+            UpdateExpression="set OfficeHoursLocation = :l, SetOfficeHoursStart=:s, SetOfficeHoursEnd=:e, SetOfficeHoursDays=:d",
             ExpressionAttributeValues={
                 ':d': day,
                 ':l': location,

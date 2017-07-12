@@ -1,7 +1,6 @@
 import logging
 import time
 import os
-import uuid
 
 import boto3
 
@@ -19,24 +18,18 @@ def build_response(message):
         }
     }
 
-def add_discussion_topic(event, context):
+def lookup_discussion_topics(event, context):
     #debug print for lex event data
     print(event)
 
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE_TOPICS'])
     team  = event['currentIntent']['slots']['GetTeam']
-    date  = event['currentIntent']['slots']['GetDay']
-    topic = event['currentIntent']['slots']['GetTopic']
+    date  = event['currentIntent']['slots']['GetQueryDay']
 
-    response = table.put_item(
-        Item={
-            'id': str(uuid.uuid1()),
-            'team': team,
-            'date': date,
-            'topic': topic
-        }
+    response = table.query(
+        KeyConditionExpression=Key('date').eq(date) & Key('team').eq(team)
     )
 
-    print("PutItem succeeded:")
+    print("Query succeeded:")
 
-    return build_response("topic added!")
+    return build_response("topics for discussion: {0}".format(response))

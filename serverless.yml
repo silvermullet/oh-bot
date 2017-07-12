@@ -26,6 +26,10 @@ functions:
     handler: oh_bot/set_office_hours.set_office_hours
   get_office_hours:
     handler: oh_bot/get_office_hours.get_office_hours
+  add_discussion_topic:
+    handler: oh_bot/add_discussion_topic.add_discussion_topic
+  lookup_discussion_topics:
+    handler: oh_bot/lookup_discussion_topics.lookup_discussion_topics
 
 resources:
   Resources:
