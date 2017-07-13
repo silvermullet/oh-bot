@@ -1,17 +1,16 @@
 <!--
 title: Oh-bot (Office Hours Bot)
-description: The Oh-bot will help manage your team's office hours, by facilitating what people will be bringing to your office hours daily to work on. Oh-bot also helps records office hour interactions for future review.
+description: Running office hours can be a great way to divert interrupts a team or indivdual has on a daily basis. However, manaing your office hours and knowing what to expect at schedule office hours can be a challenge. The Oh-bot will help manage your team's office hours. This bot will provide insight into when office hours are available and will gather up expected topics for you. Oh-bot also helps records office hour interactions for future review as well. 
 layout: Doc
 -->
 # Oh-bot - Your team's Office Hours Bot
 
 The Oh-bot will help manage your team's office hours.
 
-* Set location and time for office hours
-* Organizes and records who is intending to join the team's office hours and what topics will be discussed
+* Set location and time for office hours on a per-team or individual basis. 
+* Organizes and records who is intending on joining the team's office hours and what topics will be discussed
 * Provide insight into past office hours to help make improvements to services team provides
 
-Serverless framework driven setup
 
 ### Present abilities
 
@@ -20,6 +19,35 @@ Oh-bot is able to...
  2. Retrieve office hours for a known team (Controlled by the Lex slot SetTeam)
  3. Add discussion topic for a team's office hours for a given day
  4. Lookup office hour discussion topics for a given day
+ 
+
+### Technology stack
+
+[AWS Lex Bot](https://docs.aws.amazon.com/lex/latest/dg/what-is.html) + [Slack](https://slack.com/)
+
+[Serverless.com](https://serverless.com/framework/docs/) framework driven setup
+
+[Python 3.6 AWS Lambda Functions](https://aws.amazon.com/about-aws/whats-new/2017/04/aws-lambda-supports-python-3-6/)
+
+[Dynamodb backend](https://aws.amazon.com/documentation/dynamodb/)
+
+
+### Lex configuration overview
+
+#### Intents
+ * AddDiscusionTopicOfficeHours
+ * GetTeamsOfficeHours
+ * LookupDiscussionTopics
+ * SetTodaysOfficeHours
+ 
+#### Slots
+ * GetDiscussionTopic
+ * SetTeam
+ * OfficeHoursLocation
+ 
+#### Dynamodb tables
+ * oh-bot-{environment}
+ * oh-bot-{environment}-topics
 
 ### Local Development
 
