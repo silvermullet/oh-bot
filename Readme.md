@@ -7,6 +7,8 @@ layout: Doc
 
 ![silvermullet](https://user-images.githubusercontent.com/538171/28157153-44a1ff6e-6751-11e7-8921-25b01367e313.jpeg)
 
+[![Oh-bot](https://user-images.githubusercontent.com/538171/28185584-9e5f9428-67b3-11e7-9768-0056c55dbbb7.png)](https://youtu.be/sJlD_Xq2WbE "Oh-bot video walkthrough")
+
 The Oh-bot will help manage your team's office hours.
 
 * Set location and time for office hours on a per-team or individual basis.
