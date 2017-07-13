@@ -12,6 +12,9 @@ def build_response(message):
     for i, j in enumerate(message['Items']):
         topics += "{0}: {1}\n".format(i + 1, j['topic'])
 
+    if not topics:
+        topics = "No topics for this date have been set"
+
     return {
         "dialogAction":  {
             "type": "Close",
