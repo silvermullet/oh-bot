@@ -34,8 +34,13 @@ def get_office_hours(event, context):
     else:
         item = response['Item']
         print("GetItem succeeded:")
+
+        if not item['day']:
+            return build_response("Office hours not set for this team presently")
+
         return build_response("""{0} is holding office hours on {1} at {2}.
             Office hours starts at {3} and ends at {4}""".format(
-                team, item['day'],
+                team,
+                item['day'],
                 item['OfficeHoursLocation'], item['SetOfficeHoursStart'],
                 item['SetOfficeHoursEnd']))
