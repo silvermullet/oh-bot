@@ -19,10 +19,6 @@
         }
     },
     "name": "GetTeamsOfficeHours",
-    "checksum": "575b0299-82ce-4d1c-b124-e62f3c63b794",
-    "version": "$LATEST",
-    "lastUpdatedDate": 1499973122.696,
-    "createdDate": 1499673206.797,
     "sampleUtterances": [
         "when is office hours",
         "look up office hours",

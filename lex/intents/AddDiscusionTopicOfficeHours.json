@@ -9,8 +9,6 @@
         ]
     },
     "name": "AddDiscusionTopicOfficeHours",
-    "checksum": "e76cd152-2f19-4921-a970-d502cc5ebd4d",
-    "version": "$LATEST",
     "rejectionStatement": {
         "messages": [
             {
@@ -19,8 +17,6 @@
             }
         ]
     },
-    "createdDate": 1499822807.757,
-    "lastUpdatedDate": 1499973834.062,
     "sampleUtterances": [
         "Set topic for office hours",
         "I have a something I want help with",

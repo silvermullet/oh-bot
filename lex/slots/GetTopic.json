@@ -5,9 +5,5 @@
         }
     ],
     "name": "GetTopic",
-    "checksum": "8a02722b-4867-4df2-b443-4825d3b8ec5d",
-    "version": "$LATEST",
-    "lastUpdatedDate": 1499823206.994,
-    "createdDate": 1499823206.994,
     "description": "Get the topic the person is looking to talk about"
 }

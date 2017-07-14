@@ -5,9 +5,5 @@
         }
     ],
     "name": "OfficeHoursLocation",
-    "checksum": "a3d613ad-0ed1-4f04-999f-c2e5845d7e38",
-    "version": "$LATEST",
-    "lastUpdatedDate": 1499191503.421,
-    "createdDate": 1499191503.421,
     "description": "The location where we will be holding office hours"
 }

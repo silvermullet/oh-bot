@@ -20,7 +20,6 @@
     ],
     "name": "OfficeHoursBot",
     "locale": "en-US",
-    "checksum": "d83a7ced-3d3c-4307-85ec-a278ac638b47",
     "abortStatement": {
         "messages": [
             {
@@ -29,9 +28,6 @@
             }
         ]
     },
-    "version": "50",
-    "lastUpdatedDate": 1499973917.413,
-    "createdDate": 1499973894.351,
     "clarificationPrompt": {
         "maxAttempts": 5,
         "messages": [

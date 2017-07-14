@@ -1,9 +1,5 @@
 {
     "name": "LookupDiscussionTopics",
-    "checksum": "5254d9ba-f914-4922-bee1-678f2bc10622",
-    "version": "$LATEST",
-    "lastUpdatedDate": 1499973134.675,
-    "createdDate": 1499841183.281,
     "sampleUtterances": [
         "Tell me the topics",
         "Look up discussion topics for",

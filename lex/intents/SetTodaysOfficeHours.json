@@ -9,8 +9,6 @@
         ]
     },
     "name": "SetTodaysOfficeHours",
-    "checksum": "4e7b0591-6897-4f1d-805f-9694499e860d",
-    "version": "$LATEST",
     "rejectionStatement": {
         "messages": [
             {
@@ -19,8 +17,6 @@
             }
         ]
     },
-    "createdDate": 1496816511.288,
-    "lastUpdatedDate": 1499973145.82,
     "sampleUtterances": [
         "set office hours today",
         "I would like to set office hours",
