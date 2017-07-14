@@ -1,0 +1,16 @@
+{
+    "botChannelAssociations": [
+        {
+            "name": "SilverMullet",
+            "botConfiguration": {
+                "EndpointURL": "PUTURLHERE_ENDPOINTURL",
+                "SlackOAuthURL": "PUTURLHERE_OAUTHURL"
+            },
+            "botAlias": "silvermullet",
+            "createdDate": 1498160558.799,
+            "type": "Slack",
+            "botName": "OfficeHoursBot",
+            "description": "Oh-bot SilverMullet"
+        }
+    ]
+}

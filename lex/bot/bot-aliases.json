@@ -1,0 +1,12 @@
+{
+    "BotAliases": [
+        {
+            "name": "silvermullet",
+            "checksum": "d682e9c6-e8fd-4313-863e-27ffa235b880",
+            "lastUpdatedDate": 1499973918.825,
+            "createdDate": 1498160460.685,
+            "botName": "OfficeHoursBot",
+            "botVersion": "50"
+        }
+    ]
+}
