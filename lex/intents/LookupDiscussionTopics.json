@@ -1,0 +1,57 @@
+{
+    "name": "LookupDiscussionTopics",
+    "sampleUtterances": [
+        "Tell me the topics",
+        "Look up discussion topics for",
+        "look up discussion topics",
+        "what are the discussion topics",
+        "what are we talking about",
+        "topics at office hours",
+        "what are we talking about at office hours",
+        "who is coming",
+        "lookup topic"
+    ],
+    "slots": [
+        {
+            "slotType": "AMAZON.DATE",
+            "name": "GetQueryDay",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+                "maxAttempts": 2,
+                "messages": [
+                    {
+                        "content": "What day would you like to look up?",
+                        "contentType": "PlainText"
+                    }
+                ]
+            },
+            "priority": 2,
+            "sampleUtterances": []
+        },
+        {
+            "slotType": "SetTeam",
+            "name": "GetTeam",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+                "maxAttempts": 2,
+                "messages": [
+                    {
+                        "content": "What team would you like to see discussion topics for?",
+                        "contentType": "PlainText"
+                    }
+                ],
+                "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"select team\",\"title\":\"Select Team\",\"buttons\":[{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+            },
+            "priority": 1,
+            "slotTypeVersion": "5",
+            "sampleUtterances": []
+        }
+    ],
+    "fulfillmentActivity": {
+        "type": "CodeHook",
+        "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:ACCOUNT:function:oh-bot-dev-lookup_discussion_topics",
+            "messageVersion": "1.0"
+        }
+    }
+}

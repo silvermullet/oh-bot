@@ -1,0 +1,9 @@
+{
+    "enumerationValues": [
+        {
+            "value": "I need help with something"
+        }
+    ],
+    "name": "GetDiscussionTopic",
+    "description": "The topic to be discussed"
+}

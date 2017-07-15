@@ -1,0 +1,60 @@
+{
+    "followUpPrompt": {
+        "prompt": {
+            "maxAttempts": 3,
+            "messages": [
+                {
+                    "content": "Would you like to submit a topic for discussion to {GetTeam}'s office hours today?",
+                    "contentType": "PlainText"
+                }
+            ]
+        },
+        "rejectionStatement": {
+            "messages": [
+                {
+                    "content": "Ok, no problem.",
+                    "contentType": "PlainText"
+                }
+            ]
+        }
+    },
+    "name": "GetTeamsOfficeHours",
+    "sampleUtterances": [
+        "when is office hours",
+        "look up office hours",
+        "when is office hours for data platform",
+        "when is office hours for a team",
+        "are there office hours today",
+        "where is office hours",
+        "get office hours",
+        "tell me about office hours",
+        "what are office hours"
+    ],
+    "slots": [
+        {
+            "slotType": "SetTeam",
+            "name": "GetTeam",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+                "maxAttempts": 2,
+                "messages": [
+                    {
+                        "content": "Which team would you like to look up office hours for?",
+                        "contentType": "PlainText"
+                    }
+                ],
+                "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"title\":\"Team\",\"buttons\":[{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+            },
+            "priority": 1,
+            "slotTypeVersion": "5",
+            "sampleUtterances": []
+        }
+    ],
+    "fulfillmentActivity": {
+        "type": "CodeHook",
+        "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:ACCOUNT:function:oh-bot-dev-get_office_hours",
+            "messageVersion": "1.0"
+        }
+    }
+}

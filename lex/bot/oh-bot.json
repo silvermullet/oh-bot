@@ -1,0 +1,47 @@
+{
+    "status": "READY",
+    "intents": [
+        {
+            "intentVersion": "7",
+            "intentName": "LookupDiscussionTopics"
+        },
+        {
+            "intentVersion": "36",
+            "intentName": "AddDiscusionTopicOfficeHours"
+        },
+        {
+            "intentVersion": "4",
+            "intentName": "GetTeamsOfficeHours"
+        },
+        {
+            "intentVersion": "37",
+            "intentName": "SetTodaysOfficeHours"
+        }
+    ],
+    "name": "OfficeHoursBot",
+    "locale": "en-US",
+    "abortStatement": {
+        "messages": [
+            {
+                "content": "Sorry, I could not understand. Goodbye.",
+                "contentType": "PlainText"
+            }
+        ]
+    },
+    "clarificationPrompt": {
+        "maxAttempts": 5,
+        "messages": [
+            {
+                "content": "Hi! I don't quite understand. Check out my present abilities here: https://goo.gl/9ZgVi8",
+                "contentType": "PlainText"
+            },
+            {
+                "content": "Sorry, can you please repeat that?",
+                "contentType": "PlainText"
+            }
+        ]
+    },
+    "voiceId": "0",
+    "childDirected": false,
+    "idleSessionTTLInSeconds": 300
+}
