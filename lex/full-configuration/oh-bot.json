@@ -1,0 +1,585 @@
+{
+  "name": "OfficeHoursBot",
+  "description": null,
+  "intents": [
+    {
+      "intentName": "LookupDiscussionTopics",
+      "intentVersion": "7"
+    },
+    {
+      "intentName": "AddDiscusionTopicOfficeHours",
+      "intentVersion": "36"
+    },
+    {
+      "intentName": "GetTeamsOfficeHours",
+      "intentVersion": "4"
+    },
+    {
+      "intentName": "SetTodaysOfficeHours",
+      "intentVersion": "37"
+    }
+  ],
+  "clarificationPrompt": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Hi! I don't quite understand. Check out my present abilities here: https://goo.gl/9ZgVi8"
+      },
+      {
+        "contentType": "PlainText",
+        "content": "Sorry, can you please repeat that?"
+      }
+    ],
+    "maxAttempts": 5,
+    "responseCard": null
+  },
+  "abortStatement": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Sorry, I could not understand. Goodbye."
+      }
+    ],
+    "responseCard": null
+  },
+  "status": "READY",
+  "failureReason": null,
+  "lastUpdatedDate": "2017-07-13T19:24:23.697Z",
+  "createdDate": "2017-06-07T06:01:22.728Z",
+  "idleSessionTTLInSeconds": 300,
+  "voiceId": "0",
+  "checksum": "d83a7ced-3d3c-4307-85ec-a278ac638b47",
+  "version": "$LATEST",
+  "locale": "en-US",
+  "childDirected": false,
+  "dependencies": {
+    "intents": [
+      {
+        "name": "GetTeamsOfficeHours",
+        "description": null,
+        "slots": [
+          {
+            "name": "GetTeam",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "SetTeam",
+            "slotTypeVersion": "5",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Which team would you like to look up office hours for?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"title\":\"Team\",\"buttons\":[{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+            },
+            "priority": 1,
+            "sampleUtterances": [],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "when is office hours",
+          "look up office hours",
+          "when is office hours for data platform",
+          "when is office hours for a team",
+          "are there office hours today",
+          "where is office hours",
+          "get office hours",
+          "tell me about office hours",
+          "what are office hours"
+        ],
+        "followUpPrompt": {
+          "prompt": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "Would you like to submit a topic for discussion to {GetTeam}'s office hours today?"
+              }
+            ],
+            "maxAttempts": 3,
+            "responseCard": null
+          },
+          "rejectionStatement": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "Ok, no problem."
+              }
+            ],
+            "responseCard": null
+          }
+        },
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:REDACTED:function:oh-bot-dev-get_office_hours",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-13T19:12:32.766Z",
+        "createdDate": "2017-07-13T19:12:32.766Z",
+        "version": "4",
+        "checksum": "575b0299-82ce-4d1c-b124-e62f3c63b794"
+      },
+      {
+        "name": "AddDiscusionTopicOfficeHours",
+        "description": null,
+        "slots": [
+          {
+            "name": "GetTheTopic",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "GetDiscussionTopic",
+            "slotTypeVersion": "4",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What do you need help with or want to talk about at office hours?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"\",\"subTitle\":\"\",\"title\":\"\",\"buttons\":[]}]}"
+            },
+            "priority": 4,
+            "sampleUtterances": [
+              "CatchAllIntent {GetTheTopic}",
+              "buried hearts eel cocoon breath dreamland {GetTheTopic}",
+              "bulletin spider agency intimate wax number drunk rights {GetTheTopic}",
+              "ballerina baboon hack {GetTheTopic}"
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "GetDay",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.DATE",
+            "slotTypeVersion": null,
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What day were you looking to attend office hours? (today, tomorrow, Friday, etc)"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 3,
+            "sampleUtterances": [],
+            "responseCard": null
+          },
+          {
+            "name": "GetTeam",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "SetTeam",
+            "slotTypeVersion": "5",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What team would you like to join office hours?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "Please select a team to join office hours..."
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"https://user-images.githubusercontent.com/538171/28157153-44a1ff6e-6751-11e7-8921-25b01367e313.jpeg\",\"subTitle\":\"select team\",\"title\":\"Team\",\"buttons\":[{\"text\":\"X Lab\",\"value\":\"X Lab\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"Data Platform\",\"value\":\"Data Platform\"}]}]}"
+            },
+            "priority": 2,
+            "sampleUtterances": [
+              "{GetTeam} i would like to submit a topic"
+            ],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "Set topic for office hours",
+          "I have a something I want help with",
+          "I have an issue I want to work on",
+          "I would like to come to office hours",
+          "I have something to discuss at office hours",
+          "There is something I would like help on",
+          "coming to office hours",
+          "I need help at office hours",
+          "set topic",
+          "topic to set",
+          "add a discussion topic"
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Are you sure you want to submit this topic for office hours discussion? \"{GetTheTopic}\""
+            }
+          ],
+          "maxAttempts": 3,
+          "responseCard": null
+        },
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Okay, not submitted."
+            }
+          ],
+          "responseCard": null
+        },
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:REDACTED:function:oh-bot-dev-add_discussion_topic",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-13T19:24:00.101Z",
+        "createdDate": "2017-07-13T19:24:00.101Z",
+        "version": "36",
+        "checksum": "e76cd152-2f19-4921-a970-d502cc5ebd4d"
+      },
+      {
+        "name": "SetTodaysOfficeHours",
+        "description": null,
+        "slots": [
+          {
+            "name": "SetOfficeHoursEnd",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.TIME",
+            "slotTypeVersion": null,
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "When would you like to end hours on {SetOfficeHoursDays}?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 7,
+            "sampleUtterances": [],
+            "responseCard": null
+          },
+          {
+            "name": "SetTeam",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "SetTeam",
+            "slotTypeVersion": "5",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What team would you like to set office hours for?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"title\":\"Select Team\",\"buttons\":[{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+            },
+            "priority": 1,
+            "sampleUtterances": [
+              "set office hours today {SetTeam}"
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "SetOfficeHoursStart",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.TIME",
+            "slotTypeVersion": null,
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "When would you like to start office hours on {SetOfficeHoursDays}?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 6,
+            "sampleUtterances": [],
+            "responseCard": null
+          },
+          {
+            "name": "SetOfficeHoursDays",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.DayOfWeek",
+            "slotTypeVersion": null,
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What day(s) would you like to have office hours?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 2,
+            "sampleUtterances": [],
+            "responseCard": null
+          },
+          {
+            "name": "SetOfficeHoursLocation",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "OfficeHoursLocation",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Where would you like to hold team office hours?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 5,
+            "sampleUtterances": [],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "set office hours today",
+          "I would like to set office hours",
+          "fucker set office hours now",
+          "fuck i need to set office hours",
+          "help me set office hours",
+          "god damn it I forgot to set office hours",
+          "let's set office hours",
+          "how about some office hours",
+          "set office hours"
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Are you sure you want me to set office hours for {SetOfficeHoursStart} to {SetOfficeHoursEnd} for {SetOfficeHoursDays} at {SetOfficeHoursLocation}?"
+            }
+          ],
+          "maxAttempts": 3,
+          "responseCard": null
+        },
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Okay, office hours are not set"
+            }
+          ],
+          "responseCard": null
+        },
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:REDACTED:function:oh-bot-dev-set_office_hours",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-13T19:12:32.554Z",
+        "createdDate": "2017-07-13T19:12:32.554Z",
+        "version": "37",
+        "checksum": "4e7b0591-6897-4f1d-805f-9694499e860d"
+      },
+      {
+        "name": "LookupDiscussionTopics",
+        "description": null,
+        "slots": [
+          {
+            "name": "GetQueryDay",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.DATE",
+            "slotTypeVersion": null,
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What day would you like to look up?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 2,
+            "sampleUtterances": [],
+            "responseCard": null
+          },
+          {
+            "name": "GetTeam",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "SetTeam",
+            "slotTypeVersion": "5",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What team would you like to see discussion topics for?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"select team\",\"title\":\"Select Team\",\"buttons\":[{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+            },
+            "priority": 1,
+            "sampleUtterances": [],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "Tell me the topics",
+          "Look up discussion topics for",
+          "look up discussion topics",
+          "what are the discussion topics",
+          "what are we talking about",
+          "topics at office hours",
+          "what are we talking about at office hours",
+          "who is coming",
+          "lookup topic"
+        ],
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:REDACTED:function:oh-bot-dev-lookup_discussion_topics",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-13T19:12:32.478Z",
+        "createdDate": "2017-07-13T19:12:32.478Z",
+        "version": "7",
+        "checksum": "5254d9ba-f914-4922-bee1-678f2bc10622"
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "SetTeam",
+        "description": "Team office hours applies to",
+        "enumerationValues": [
+          {
+            "value": "X Lab"
+          },
+          {
+            "value": "Comms Team"
+          },
+          {
+            "value": "Property Intel"
+          },
+          {
+            "value": "Data Platform"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-13T19:06:20.577Z",
+        "createdDate": "2017-07-13T19:06:20.577Z",
+        "version": "5",
+        "checksum": null
+      },
+      {
+        "name": "GetDiscussionTopic",
+        "description": "The topic to be discussed",
+        "enumerationValues": [
+          {
+            "value": "I need help with something"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-12T08:53:00.857Z",
+        "createdDate": "2017-07-12T08:53:00.857Z",
+        "version": "4",
+        "checksum": null
+      },
+      {
+        "name": "OfficeHoursLocation",
+        "description": "The location where we will be holding office hours",
+        "enumerationValues": [
+          {
+            "value": "Trulia 7th floor cafeteria"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-04T18:05:32.064Z",
+        "createdDate": "2017-07-04T18:05:32.064Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "SetTeam",
+        "description": "Team office hours applies to",
+        "enumerationValues": [
+          {
+            "value": "X Lab"
+          },
+          {
+            "value": "Comms Team"
+          },
+          {
+            "value": "Property Intel"
+          },
+          {
+            "value": "Data Platform"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-13T19:06:20.577Z",
+        "createdDate": "2017-07-13T19:06:20.577Z",
+        "version": "5",
+        "checksum": null
+      },
+      {
+        "name": "SetTeam",
+        "description": "Team office hours applies to",
+        "enumerationValues": [
+          {
+            "value": "X Lab"
+          },
+          {
+            "value": "Comms Team"
+          },
+          {
+            "value": "Property Intel"
+          },
+          {
+            "value": "Data Platform"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-13T19:06:20.577Z",
+        "createdDate": "2017-07-13T19:06:20.577Z",
+        "version": "5",
+        "checksum": null
+      },
+      {
+        "name": "SetTeam",
+        "description": "Team office hours applies to",
+        "enumerationValues": [
+          {
+            "value": "X Lab"
+          },
+          {
+            "value": "Comms Team"
+          },
+          {
+            "value": "Property Intel"
+          },
+          {
+            "value": "Data Platform"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-13T19:06:20.577Z",
+        "createdDate": "2017-07-13T19:06:20.577Z",
+        "version": "5",
+        "checksum": null
+      }
+    ]
+  }
+}
