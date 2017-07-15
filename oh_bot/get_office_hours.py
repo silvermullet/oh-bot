@@ -32,15 +32,18 @@ def get_office_hours(event, context):
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
-        item = response['Item']
-        print("GetItem succeeded:")
-
-        if not item['day']:
+        try:
+            item = response['Item']
+            print("GetItem succeeded:")
+        except KeyError as e:
+            print(e)
+            print("GetItem item not found:")
             return build_response("Office hours not set for this team presently")
-
-        return build_response("""{0} is holding office hours on {1} at {2}.
-            Office hours starts at {3} and ends at {4}""".format(
+        else:
+            return build_response("""{0} is holding office hours on {1} at {2}.
+                Office hours starts at {3} and ends at {4}""".format(
                 team,
                 item['day'],
-                item['OfficeHoursLocation'], item['SetOfficeHoursStart'],
+                item['OfficeHoursLocation'],
+                item['SetOfficeHoursStart'],
                 item['SetOfficeHoursEnd']))
