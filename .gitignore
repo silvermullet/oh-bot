@@ -1,3 +1,4 @@
 .serverless
+local.yml
 *.pyc
 *.pyo
