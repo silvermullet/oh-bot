@@ -1,0 +1,2 @@
+slack:
+  clientSecret: "asdsdfasdfsafdasdfsafsafdsafsdf" # replace with your bot auth token and rename file to local.yml

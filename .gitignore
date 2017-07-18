@@ -2,3 +2,4 @@
 local.yml
 *.pyc
 *.pyo
+_build

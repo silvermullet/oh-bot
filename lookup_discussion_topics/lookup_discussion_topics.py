@@ -8,9 +8,13 @@ from boto3.dynamodb.conditions import Key, Attr
 dynamodb = boto3.resource('dynamodb')
 
 def build_response(message):
+    print(message)
     topics = ""
     for i, j in enumerate(message['Items']):
-        topics += "{0}: {1}\n".format(i + 1, j['topic'])
+        topics += "{0}: {1} - submitted by {2}\n".format(
+            i + 1,
+            j['topic'],
+            j['user'])
 
     if not topics:
         topics = "No topics for this date have been set"
