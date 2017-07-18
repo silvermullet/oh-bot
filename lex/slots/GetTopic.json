@@ -1,9 +1,0 @@
-{
-    "enumerationValues": [
-        {
-            "value": "Looking to talk about Terraform"
-        }
-    ],
-    "name": "GetTopic",
-    "description": "Get the topic the person is looking to talk about"
-}

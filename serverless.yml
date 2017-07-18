@@ -2,12 +2,21 @@ service: oh-bot
 
 frameworkVersion: ">=1.4.0 <2.0.0"
 
+plugins:
+  - serverless-package-python-functions
+
+custom:
+  pkgPyFuncs: # plugin configuration
+    buildDir: _build
+    requirementsFile: 'requirements.txt'
+
 provider:
   name: aws
   runtime: python3.6
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
     DYNAMODB_TABLE_TOPICS: '${self:service}-${opt:stage, self:provider.stage}-topics'
+    CLIENT_SECRET: ${file(local.yml):slack.clientSecret}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -23,13 +32,33 @@ provider:
 
 functions:
   set_office_hours:
-    handler: oh_bot/set_office_hours.set_office_hours
+    name: set_office_hours
+    handler: set_office_hours.set_office_hours
+    package:
+      include:
+        - set_office_hours
+      artifact: ${self:custom.pkgPyFuncs.buildDir}/set_office_hours.zip
   get_office_hours:
-    handler: oh_bot/get_office_hours.get_office_hours
+    name: get_office_hours
+    handler: get_office_hours.get_office_hours
+    package:
+      include:
+        - get_office_hours
+      artifact: ${self:custom.pkgPyFuncs.buildDir}/get_office_hours.zip
   add_discussion_topic:
-    handler: oh_bot/add_discussion_topic.add_discussion_topic
+    name: add_discussion_topic
+    handler: add_discussion_topic.add_discussion_topic
+    package:
+      include:
+        - add_discussion_topic
+      artifact: ${self:custom.pkgPyFuncs.buildDir}/add_discussion_topic.zip
   lookup_discussion_topics:
-    handler: oh_bot/lookup_discussion_topics.lookup_discussion_topics
+    name: lookup_discussion_topics
+    handler: lookup_discussion_topics.lookup_discussion_topics
+    package:
+      include:
+        - lookup_discussion_topics
+      artifact: ${self:custom.pkgPyFuncs.buildDir}/lookup_discussion_topics.zip
 
 resources:
   Resources:

@@ -36,6 +36,13 @@ Oh-bot is able to...
 
 [Dynamodb backend](https://aws.amazon.com/documentation/dynamodb/)
 
+### Setup requirements
+ * Install serverless ```npm install serverless```
+ * Install serverless-package-python-functions ```npm install --save serverless-package-python-functions```
+ * copy local_sample.yml to local.yml and update local.yml to use your Slack bot's auth token
+ * Run ```serverless deploy```
+ * Review lex/full-configuration/oh-bot.json and import into your AWS with adjusted values for the SetTeam slot values
+
 
 ### Lex configuration overview
 
