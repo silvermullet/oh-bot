@@ -74,3 +74,5 @@ To run local DynamoDB on port 8000
 ```
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
 ```
+
+* oh-bot logo by [Rebecca Meredith](http://www.rebeccameredith.com/about)
