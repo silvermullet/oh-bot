@@ -24,6 +24,7 @@
       "description": "",
       "slotConstraint": "Required",
       "slotType": "SetTeam",
+      "slotTypeVersion": "$LATEST",
       "valueElicitationPrompt": {
         "messages": [
           {
@@ -78,6 +79,7 @@
       "description": "",
       "slotConstraint": "Required",
       "slotType": "OfficeHoursLocation",
+      "slotTypeVersion": "$LATEST",
       "valueElicitationPrompt": {
         "messages": [
           {

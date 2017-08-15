@@ -7,6 +7,7 @@
       "description": "Get a team's office hours intent",
       "slotConstraint": "Required",
       "slotType": "SetTeam",
+      "slotTypeVersion": "$LATEST",
       "valueElicitationPrompt": {
         "messages": [
           {
