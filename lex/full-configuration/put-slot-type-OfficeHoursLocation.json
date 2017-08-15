@@ -1,0 +1,10 @@
+{
+  "name": "OfficeHoursLocation",
+  "description": "The location where we will be holding office hours",
+  "enumerationValues": [
+    {
+      "value": "Trulia 7th floor cafeteria"
+    }
+  ],
+  "checksum": ""
+}

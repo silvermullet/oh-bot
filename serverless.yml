@@ -9,6 +9,7 @@ custom:
   pkgPyFuncs: # plugin configuration
     buildDir: _build
     requirementsFile: 'requirements.txt'
+    cleanup: true
 
 provider:
   name: aws

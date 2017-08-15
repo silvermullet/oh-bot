@@ -1,0 +1,117 @@
+{
+  "name": "AddDiscusionTopicOfficeHours",
+  "description": null,
+  "slots": [
+    {
+      "name": "GetTheTopic",
+      "description": null,
+      "slotConstraint": "Required",
+      "slotType": "GetDiscussionTopic",
+      "slotTypeVersion": "4",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "What do you need help with or want to talk about at office hours?"
+          }
+        ],
+        "maxAttempts": 2,
+        "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"\",\"subTitle\":\"\",\"title\":\"\",\"buttons\":[]}]}"
+      },
+      "priority": 4,
+      "sampleUtterances": [
+        "CatchAllIntent {GetTheTopic}",
+        "buried hearts eel cocoon breath dreamland {GetTheTopic}",
+        "bulletin spider agency intimate wax number drunk rights {GetTheTopic}",
+        "ballerina baboon hack {GetTheTopic}"
+      ],
+      "responseCard": null
+    },
+    {
+      "name": "GetDay",
+      "description": null,
+      "slotConstraint": "Required",
+      "slotType": "AMAZON.DATE",
+      "slotTypeVersion": null,
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "What day were you looking to attend office hours? (today, tomorrow, Friday, etc)"
+          }
+        ],
+        "maxAttempts": 2,
+        "responseCard": null
+      },
+      "priority": 3,
+      "sampleUtterances": [],
+      "responseCard": null
+    },
+    {
+      "name": "GetTeam",
+      "description": null,
+      "slotConstraint": "Required",
+      "slotType": "SetTeam",
+      "slotTypeVersion": "5",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "What team would you like to join office hours?"
+          },
+          {
+            "contentType": "PlainText",
+            "content": "Please select a team to join office hours..."
+          }
+        ],
+        "maxAttempts": 2,
+        "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"https://user-images.githubusercontent.com/538171/28157153-44a1ff6e-6751-11e7-8921-25b01367e313.jpeg\",\"subTitle\":\"select team\",\"title\":\"Team\",\"buttons\":[{\"text\":\"X Lab\",\"value\":\"X Lab\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"Data Platform\",\"value\":\"Data Platform\"}]}]}"
+      },
+      "priority": 2,
+      "sampleUtterances": [
+        "{GetTeam} i would like to submit a topic"
+      ],
+      "responseCard": null
+    }
+  ],
+  "sampleUtterances": [
+    "Set topic for office hours",
+    "I have a something I want help with",
+    "I have an issue I want to work on",
+    "I would like to come to office hours",
+    "I have something to discuss at office hours",
+    "There is something I would like help on",
+    "coming to office hours",
+    "I need help at office hours",
+    "set topic",
+    "topic to set",
+    "add a discussion topic"
+  ],
+  "confirmationPrompt": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Are you sure you want to submit this topic for office hours discussion? \"{GetTheTopic}\""
+      }
+    ],
+    "maxAttempts": 3,
+    "responseCard": null
+  },
+  "rejectionStatement": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Okay, not submitted."
+      }
+    ],
+    "responseCard": null
+  },
+  "fulfillmentActivity": {
+    "type": "CodeHook",
+    "codeHook": {
+      "uri": "arn:aws:lambda:us-east-1:REPLACE_ME_ACCT:function:add_discussion_topic",
+      "messageVersion": "1.0"
+    }
+  },
+  "parentIntentSignature": null
+}

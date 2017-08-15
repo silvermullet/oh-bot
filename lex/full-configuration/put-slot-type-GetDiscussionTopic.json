@@ -1,0 +1,10 @@
+{
+  "name": "GetDiscussionTopic",
+  "description": "The topic to be discussed",
+  "enumerationValues": [
+    {
+      "value": "I need help with something"
+    }
+  ],
+  "checksum": ""
+}
