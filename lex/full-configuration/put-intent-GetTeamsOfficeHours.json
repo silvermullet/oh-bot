@@ -1,0 +1,45 @@
+{
+  "name": "GetTeamsOfficeHours",
+  "description": "Get a team's office hours intent",
+  "slots": [
+    {
+      "name": "GetTeam",
+      "description": "Get a team's office hours intent",
+      "slotConstraint": "Required",
+      "slotType": "SetTeam",
+      "slotTypeVersion": "$LATEST",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "Which team would you like to look up office hours for?"
+          }
+        ],
+        "maxAttempts": 2,
+        "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"title\":\"Team\",\"buttons\":[{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+      },
+      "priority": 1,
+      "sampleUtterances": []
+    }
+  ],
+  "sampleUtterances": [
+    "when is office hours",
+    "look up office hours",
+    "when is office hours for data platform",
+    "when is office hours for a team",
+    "are there office hours today",
+    "where is office hours",
+    "get office hours",
+    "tell me about office hours",
+    "what are office hours",
+    "lookup office hours"
+  ],
+  "fulfillmentActivity": {
+    "type": "CodeHook",
+    "codeHook": {
+      "uri": "arn:aws:lambda:us-east-1:REPLACE_ME_ACCT:function:get_office_hours",
+      "messageVersion": "1.0"
+    }
+  },
+  "checksum": ""
+}

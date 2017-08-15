@@ -1,0 +1,19 @@
+{
+  "name": "SetTeam",
+  "description": "Team office hours applies to",
+  "enumerationValues": [
+    {
+      "value": "X Lab"
+    },
+    {
+      "value": "Comms Team"
+    },
+    {
+      "value": "Property Intel"
+    },
+    {
+      "value": "Data Platform"
+    }
+  ],
+  "checksum": "" 
+}

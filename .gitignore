@@ -3,3 +3,5 @@ local.yml
 *.pyc
 *.pyo
 _build
+_build_lex
+node_modules

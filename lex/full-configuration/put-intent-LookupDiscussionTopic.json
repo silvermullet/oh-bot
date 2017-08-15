@@ -1,0 +1,61 @@
+{
+    "name": "LookupDiscussionTopics",
+    "checksum": "",
+    "description": "Look up discussion topics intent",
+    "slots": [
+        {
+            "name": "GetQueryDay",
+            "description": "Set the day to query on.",
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.DATE",
+            "valueElicitationPrompt": {
+                "messages": [
+                    {
+                        "contentType": "PlainText",
+                        "content": "What day would you like to look up?"
+                    }
+                ],
+                "maxAttempts": 2
+            },
+            "priority": 2,
+            "sampleUtterances": []
+        },
+        {
+          "name": "GetTeam",
+          "description": "Get the team to lookup.",
+          "slotConstraint": "Required",
+          "slotType": "SetTeam",
+          "slotTypeVersion": "$LATEST",
+          "valueElicitationPrompt": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "What team would you like to see discussion topics for?"
+              }
+            ],
+            "maxAttempts": 2,
+            "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"select team\",\"title\":\"Select Team\",\"buttons\":[{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+          },
+          "priority": 1,
+          "sampleUtterances": []
+        }
+      ],
+      "sampleUtterances": [
+        "Tell me the topics",
+        "Look up discussion topics for",
+        "look up discussion topics",
+        "what are the discussion topics",
+        "what are we talking about",
+        "topics at office hours",
+        "what are we talking about at office hours",
+        "who is coming",
+        "lookup topic"
+      ],
+      "fulfillmentActivity": {
+        "type": "CodeHook",
+        "codeHook": {
+          "uri": "arn:aws:lambda:us-east-1:REPLACE_ME_ACCT:function:lookup_discussion_topics",
+          "messageVersion": "1.0"
+        }
+      }
+    }

@@ -1,0 +1,49 @@
+{
+    "name": "OfficeHoursBot",
+    "description": "Oh-bot",
+    "intents": [
+        {
+            "intentName": "LookupDiscussionTopics",
+            "intentVersion": "$LATEST"
+        },
+        {
+            "intentName": "AddDiscusionTopicOfficeHours",
+            "intentVersion": "$LATEST"
+        },
+        {
+            "intentName": "GetTeamsOfficeHours",
+            "intentVersion": "$LATEST"
+        },
+        {
+            "intentName": "SetTodaysOfficeHours",
+            "intentVersion": "$LATEST"
+        }
+    ],
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Hi! I don't quite understand. Check out my present abilities here: https://goo.gl/9ZgVi8"
+        },
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    },
+    "idleSessionTTLInSeconds": 300,
+    "voiceId": "0",
+    "checksum": "",
+    "processBehavior": "SAVE",
+    "locale": "en-US",
+    "childDirected": false
+}

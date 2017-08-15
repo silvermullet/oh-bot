@@ -1,0 +1,133 @@
+{
+  "name": "SetTodaysOfficeHours",
+  "description": "",
+  "slots": [
+    {
+      "name": "SetOfficeHoursEnd",
+      "description": "",
+      "slotConstraint": "Required",
+      "slotType": "AMAZON.TIME",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "When would you like to end hours on {SetOfficeHoursDays}?"
+          }
+        ],
+        "maxAttempts": 2
+      },
+      "priority": 7,
+      "sampleUtterances": []
+    },
+    {
+      "name": "SetTeam",
+      "description": "",
+      "slotConstraint": "Required",
+      "slotType": "SetTeam",
+      "slotTypeVersion": "$LATEST",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "What team would you like to set office hours for?"
+          }
+        ],
+        "maxAttempts": 2,
+        "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"title\":\"Select Team\",\"buttons\":[{\"text\":\"Data Platform\",\"value\":\"Data Platform\"},{\"text\":\"Comms Team\",\"value\":\"Comms Team\"},{\"text\":\"Property Intel\",\"value\":\"Property Intel\"},{\"text\":\"X Lab\",\"value\":\"X Lab\"}]}]}"
+      },
+      "priority": 1,
+      "sampleUtterances": [
+        "set office hours today {SetTeam}"
+      ]
+    },
+    {
+      "name": "SetOfficeHoursStart",
+      "description": "",
+      "slotConstraint": "Required",
+      "slotType": "AMAZON.TIME",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "When would you like to start office hours on {SetOfficeHoursDays}?"
+          }
+        ],
+        "maxAttempts": 2
+      },
+      "priority": 6,
+      "sampleUtterances": []
+    },
+    {
+      "name": "SetOfficeHoursDays",
+      "description": "",
+      "slotConstraint": "Required",
+      "slotType": "AMAZON.DayOfWeek",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "What day(s) would you like to have office hours?"
+          }
+        ],
+        "maxAttempts": 2
+      },
+      "priority": 2,
+      "sampleUtterances": []
+    },
+    {
+      "name": "SetOfficeHoursLocation",
+      "description": "",
+      "slotConstraint": "Required",
+      "slotType": "OfficeHoursLocation",
+      "slotTypeVersion": "$LATEST",
+      "valueElicitationPrompt": {
+        "messages": [
+          {
+            "contentType": "PlainText",
+            "content": "Where would you like to hold team office hours?"
+          }
+        ],
+        "maxAttempts": 2
+      },
+      "priority": 5,
+      "sampleUtterances": []
+    }
+  ],
+  "sampleUtterances": [
+    "set office hours today",
+    "I would like to set office hours",
+    "set office hours now",
+    "I need to set office hours",
+    "help me set office hours",
+    "Damn it I forgot to set office hours",
+    "let's set office hours",
+    "how about some office hours",
+    "set office hours"
+  ],
+  "confirmationPrompt": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Are you sure you want me to set office hours for {SetOfficeHoursStart} to {SetOfficeHoursEnd} for {SetOfficeHoursDays} at {SetOfficeHoursLocation}?"
+      }
+    ],
+    "maxAttempts": 3
+  },
+  "rejectionStatement": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Okay, office hours are not set"
+      }
+    ]
+  },
+  "fulfillmentActivity": {
+    "type": "CodeHook",
+    "codeHook": {
+      "uri": "arn:aws:lambda:us-east-1:REPLACE_ME_ACCT:function:set_office_hours",
+      "messageVersion": "1.0"
+    }
+  },
+  "parentIntentSignature": "",
+  "checksum": ""
+}
