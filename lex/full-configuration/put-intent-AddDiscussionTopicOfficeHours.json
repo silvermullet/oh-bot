@@ -1,7 +1,6 @@
 {
   "name": "AddDiscusionTopicOfficeHours",
   "description": "Add discussion topcic for office hours",
-  "checksum": "",
   "slots": [
     {
       "name": "GetTheTopic",

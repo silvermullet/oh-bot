@@ -42,7 +42,6 @@
     },
     "idleSessionTTLInSeconds": 300,
     "voiceId": "0",
-    "checksum": "",
     "processBehavior": "SAVE",
     "locale": "en-US",
     "childDirected": false
