@@ -18,7 +18,7 @@ The Oh-bot will help manage your team's office hours.
 
 Oh-bot is able to...
 
-#### Set your team's office hours. Just ask to set your team's office hours and it will help out.
+#### Set your team's office hours
 ##### Sample Utterances
   * "SampleUtterances"
   * "Set office hours today"
