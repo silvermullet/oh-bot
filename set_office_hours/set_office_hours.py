@@ -4,6 +4,8 @@ import os
 import boto3
 from botocore.exceptions import ClientError
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 dynamodb = boto3.resource('dynamodb')
 
 def build_response(message):
@@ -19,8 +21,7 @@ def build_response(message):
     }
 
 def set_office_hours(event, context):
-    #debug print for lex event data
-    print(event)
+    logger.info("build_response to Lex: {}".format(message))
 
     table    = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
     day      = event['currentIntent']['slots']['SetOfficeHoursDays']
@@ -45,7 +46,7 @@ def set_office_hours(event, context):
             ReturnValues="UPDATED_NEW"
         )
     except ClientError as e:
-        print(e.response['Error']['Message'])
+        logger.error("ClientError: {}".format(e.response['Error']['Message']))
         response = table.put_item(
             Item={
                 'team': team,
@@ -55,7 +56,7 @@ def set_office_hours(event, context):
                 'SetOfficeHoursEnd': end
                 }
             )
-        print("new PutItem succeeded:")
+        logger.info("new PutItem succeeded:")
     else:
-        print("UpdateItem succeeded:")
+        logger.info("UpdateItem succeeded:")
     return build_response("Office hours set successfully!")

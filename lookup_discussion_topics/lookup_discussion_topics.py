@@ -5,10 +5,12 @@ import os
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 dynamodb = boto3.resource('dynamodb')
 
 def build_response(message):
-    print(message)
+    logger.info("build_response to Lex: {}".format(message))
     topics = ""
     for i, j in enumerate(message['Items']):
         topics += "{0}: {1} - submitted by {2}\n".format(
@@ -31,8 +33,7 @@ def build_response(message):
     }
 
 def lookup_discussion_topics(event, context):
-    #debug print for lex event data
-    print(event)
+    logger.info("Lex event: {}".format(event))
 
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE_TOPICS'])
     team  = event['currentIntent']['slots']['GetTeam']
@@ -43,6 +44,6 @@ def lookup_discussion_topics(event, context):
         FilterExpression=filter_expression,
     )
 
-    print("Query succeeded:")
+    logger.info("Query succeded:")
 
     return build_response(response)
