@@ -3,6 +3,8 @@ import json
 import os
 import boto3
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 dynamodb = boto3.resource('dynamodb')
 
 def build_response(message):
@@ -18,8 +20,7 @@ def build_response(message):
     }
 
 def get_office_hours(event, context):
-    #debug print for lex event data
-    print(event)
+    logger.info('Lex event: {}'.format(event))
     table    = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
     team     = event['currentIntent']['slots']['GetTeam']
 
@@ -30,14 +31,13 @@ def get_office_hours(event, context):
             }
         )
     except ClientError as e:
-        print(e.response['Error']['Message'])
+        logger.error("ClientError: {}".format(e.response['Error']['Message']))
     else:
         try:
             item = response['Item']
-            print("GetItem succeeded:")
+            logger.info('GetItem succeeded:')
         except KeyError as e:
-            print(e)
-            print("GetItem item not found:")
+            logger.error("GetItem item not found: {}".format(e))
             return build_response("Office hours not set for this team presently")
         else:
             return build_response("""{0} is holding office hours on {1} at {2}.
