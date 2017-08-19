@@ -5,6 +5,6 @@
   "author": "SilverMullet",
   "license": "MIT",
   "dependencies": {
-    "serverless-package-python-functions": "^0.1.2"
+    "serverless-package-python-functions": "^0.2.2"
   }
 }

@@ -1,6 +1,5 @@
 {
     "name": "LookupDiscussionTopics",
-    "checksum": "",
     "description": "Look up discussion topics intent",
     "slots": [
         {

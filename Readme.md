@@ -17,10 +17,58 @@ The Oh-bot will help manage your team's office hours.
 ### Present abilities
 
 Oh-bot is able to...
- 1. Set your team's office hours. Just ask to set your team's office hours and it will help out.
- 2. Retrieve office hours for a known team (Controlled by the Lex slot SetTeam)
- 3. Add discussion topic for a team's office hours for a given day
- 4. Lookup office hour discussion topics for a given day
+
+#### Set your team's office hours
+##### Sample Utterances
+  * "SampleUtterances"
+  * "Set office hours today"
+  * "I would like to set office hours"
+  * "Set office hours now"
+  * "I need to set office hours"
+  * "Help me set office hours"
+  * "Damn it I forgot to set office hours"
+  * "Let's set office hours"
+  * "How about some office hours"
+  * "Set office hours"
+
+#### Retrieve office hours for a known team (Controlled by the Lex slot SetTeam)
+##### Sample Utterances
+  * "When is office hours"
+  * "Look up office hours"
+  * "When is office hours for data platform"
+  * "When is office hours for a team"
+  * "Are there office hours today"
+  * "Where is office hours"
+  * "Get office hours"
+  * "Tell me about office hours"
+  * "What are office hours"
+  * "Lookup office hours"
+
+#### Add discussion topic for a team's office hours for a given day
+##### Sample Utterances
+  * "Set topic for office hours"
+  * "I have a something I want help with"
+  * "I have an issue I want to work on"
+  * "I would like to come to office hours"
+  * "I have something to discuss at office hours"
+  * "There is something I would like help on"
+  * "Coming to office hours"
+  * "I need help at office hours"
+  * "Set topic"
+  * "Topic to set"
+  * "Add a discussion topic"
+
+#### Lookup office hour discussion topics for a given day
+##### Sample Utterances
+  * "Tell me the topics"
+  * "Look up discussion topics for"
+  * "Look up discussion topics"
+  * "What are the discussion topics"
+  * "What are we talking about"
+  * "Topics at office hours"
+  * "What are we talking about at office hours"
+  * "Who is coming"
+  * "Lookup topic"
 
 ### Video walkthrough
 
