@@ -37,28 +37,28 @@ provider:
 functions:
   set_office_hours:
     name: set_office_hours-${opt:stage}
-    handler: set_office_hours-${opt:stage}.set_office_hours
+    handler: set_office_hours.set_office_hours
     package:
       include:
         - set_office_hours
       artifact: ${self:custom.pkgPyFuncs.buildDir}/set_office_hours-${opt:stage}.zip
   get_office_hours:
     name: get_office_hours-${opt:stage}
-    handler: get_office_hours-${opt:stage}.get_office_hours
+    handler: get_office_hours.get_office_hours
     package:
       include:
         - get_office_hours
       artifact: ${self:custom.pkgPyFuncs.buildDir}/get_office_hours-${opt:stage}.zip
   add_discussion_topic:
     name: add_discussion_topic-${opt:stage}
-    handler: add_discussion_topic-${opt:stage}.add_discussion_topic
+    handler: add_discussion_topic.add_discussion_topic
     package:
       include:
         - add_discussion_topic
       artifact: ${self:custom.pkgPyFuncs.buildDir}/add_discussion_topic-${opt:stage}.zip
   lookup_discussion_topics:
     name: lookup_discussion_topics-${opt:stage}
-    handler: lookup_discussion_topics-${opt:stage}.lookup_discussion_topics
+    handler: lookup_discussion_topics.lookup_discussion_topics
     package:
       include:
         - lookup_discussion_topics
